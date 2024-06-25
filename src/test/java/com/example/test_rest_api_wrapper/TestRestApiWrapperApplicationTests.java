@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import com.example.test_rest_api_wrapper.services.ScriptExecutorService;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -93,48 +92,3 @@ class TestRestApiWrapperApplicationTests {
         assertThat(scriptExecutorService.getScript(id)).isNull();
     }
 }
-/*
-    @LocalServerPort
-    private int port;
-
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Autowired
-    private ScriptController scriptController;
-
-    @Autowired
-    private ScriptExecutorService scriptExecutorService;
-
-    @Test
-    public void contextLoads() {
-        assertThat(scriptController).isNotNull();
-    }
-
-    @Test
-    public void executeScriptTest() {
-        String code = "console.log('Hello, world!');";
-        Script script = restTemplate.postForObject("http://localhost:" + port + "/scripts/execute", code, Script.class);
-        assertThat(script).isNotNull();
-        assertThat(script.getStatus()).isEqualTo("queued");
-    }
-
-    @Test
-    public void getScriptTest() {
-        String code = "console.log('Hello, world!');";
-        Script script = restTemplate.postForObject("http://localhost:" + port + "/scripts/execute", code, Script.class);
-        Script fetchedScript = restTemplate.getForObject("http://localhost:" + port + "/scripts/" + script.getId(), Script.class);
-        assertThat(fetchedScript).isNotNull();
-        assertThat(fetchedScript.getId()).isEqualTo(script.getId());
-    }
-
-    @Test
-    public void listScriptsTest() {
-        String code = "console.log('Hello, world!');";
-        restTemplate.postForObject("http://localhost:" + port + "/scripts/execute", code, Script.class);
-        List<Script> scripts = restTemplate.getForObject("http://localhost:" + port + "/scripts", List.class);
-        assertThat(scripts).isNotNull();
-        assertThat(scripts.size()).isGreaterThan(0);
-    }*/
-
-
